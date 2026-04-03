@@ -1,0 +1,64 @@
+:root {
+  --bg: #0a0e1a;
+  --panel: #0f1628;
+  --border: #1e2d50;
+  --accent: #00d4ff;
+  --accent2: #7b2fff;
+  --hit: #00ff88;
+  --fault: #ff3d5a;
+  --text: #c8d8f0;
+  --muted: #4a6080;
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'Rajdhani', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--display);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+}
