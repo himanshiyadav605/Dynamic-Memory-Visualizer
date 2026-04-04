@@ -19,6 +19,66 @@
             <p> DYNAMIC MEMORY MANAGEMENT SIMULATOR </p>
         </div>
     </header>
+      <!-- MAIN LAYOUT -->
+  <div class="container">
+
+    <!-- LEFT: INPUT PANEL -->
+    <aside>
+      <div class="panel">
+        <div class="panel-title"> CONFIG</div>
+
+        <div class="field">
+          <label>NUMBER OF FRAMES</label>
+          <input type="number" id="frames-input" min="1" max="10" value="3" />
+        </div>
+
+        <div class="field">
+          <label>PAGE REFERENCE STRING</label>
+          <input type="text" id="pages-input"
+            value="7,0,1,2,0,3,0,4,2,3,0,3,2" />
+        </div>
+
+        <div class="field">
+          <label>REPLACEMENT ALGORITHM</label>
+          <div class="algo-toggle">
+            <button class="algo-btn active" data-algo="FIFO">FIFO</button>
+            <button class="algo-btn" data-algo="LRU">LRU</button>
+          </div>
+        </div>
+
+        <div class="error-msg" id="error-msg"></div>
+
+        <div class="speed-row">
+          <label>ANIM SPEED</label>
+          <input type="range" id="speed-slider" min="200" max="1500" value="700" />
+        </div>
+
+        <button class="run-btn" id="run-btn">▶ RUN SIMULATION</button>
+        <button class="run-btn" id="compare-btn">⚡ COMPARE FIFO vs LRU</button>
+        <button class="reset-btn" id="reset-btn">↺ RESET</button>
+
+        <div class="legend">
+          <div class="legend-item">
+            <div class="dot hit"></div> PAGE HIT
+          </div>
+          <div class="legend-item">
+            <div class="dot fault"></div> PAGE FAULT
+          </div>
+        </div>
+      </div>
+    </aside>
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="script.js"></script>
 </body>
 
 </html>
