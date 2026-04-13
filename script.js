@@ -120,3 +120,77 @@ document.getElementById('run-btn').addEventListener('click', () => {
   bindStepButtons();
   updateStepBtns(0);
 });
+// FIFO
+function runFIFO(pages, n) {
+  const frames = [], results = [], queue = [];
+
+  for (let page of pages) {
+    const snapshot = Array(n).fill(null);
+
+    if (frames.includes(page)) {
+      frames.forEach((v, i) => snapshot[i] = v);
+      results.push({ snapshot, page, fault: false });
+    } else {
+      if (frames.length < n) frames.push(page);
+      else frames[frames.indexOf(queue.shift())] = page;
+
+      queue.push(page);
+      frames.forEach((v, i) => snapshot[i] = v);
+      results.push({ snapshot, page, fault: true });
+    }
+  }
+  return results;
+}
+
+// LRU
+function runLRU(pages, n) {
+  const frames = [], results = [], recent = [];
+
+  for (let page of pages) {
+    const snapshot = Array(n).fill(null);
+
+    if (frames.includes(page)) {
+      recent.splice(recent.indexOf(page), 1);
+      recent.push(page);
+      frames.forEach((v, i) => snapshot[i] = v);
+      results.push({ snapshot, page, fault: false });
+    } else {
+      if (frames.length < n) frames.push(page);
+      else frames[frames.indexOf(recent.shift())] = page;
+
+      recent.push(page);
+      frames.forEach((v, i) => snapshot[i] = v);
+      results.push({ snapshot, page, fault: true });
+    }
+  }
+  return results;
+}
+
+// UPDATE STATS
+function updateStats(results, upTo) {
+  const slice = results.slice(0, upTo);
+  const hits = slice.filter(r => !r.fault).length;
+  const faults = slice.filter(r => r.fault).length;
+
+  document.getElementById('val-hits').textContent = hits || '—';
+  document.getElementById('val-faults').textContent = faults || '—';
+}
+
+// RENDER STEP
+function renderStep(step) {
+  for (let s = 0; s < step; s++) {
+    const r = allResults[s];
+
+    for (let f = 0; f < nFrames; f++) {
+      const cell = document.getElementById(`f${f}-s${s}`);
+      if (!cell) continue;
+
+      if (r.snapshot[f] !== null) {
+        cell.textContent = r.snapshot[f];
+        cell.className = r.fault ? 'fault-cell' : 'hit-cell';
+      }
+    }
+  }
+
+  updateStats(allResults, step);
+}
