@@ -62,3 +62,75 @@ header p {
   grid-template-columns: 320px 1fr;
   gap: 1.5rem;
 }
+panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.panel-title {
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Buttons */
+.algo-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.algo-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.run-btn {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  border: none;
+  color: white;
+}
+
+.reset-btn {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
