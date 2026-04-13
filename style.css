@@ -134,3 +134,63 @@ select {
   height: 10px;
   border-radius: 50%;
 }
+
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Stats */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  color: white;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* Visualization */
+.viz-wrapper {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-spacing: 4px;
+}
+
+.frame-row td {
+  padding: 8px;
+  text-align: center;
+}
+
+.hit-cell {
+  background: rgba(0,255,136,0.2);
+}
+
+.fault-cell {
+  background: rgba(255,61,90,0.2);
+}
+
+.placeholder {
+  text-align: center;
+  padding: 2rem;
+}
