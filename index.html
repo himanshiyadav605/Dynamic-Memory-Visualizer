@@ -68,14 +68,41 @@
       </div>
     </aside>
 
+      <!-- RIGHT: OUTPUT PANEL -->
+    <div class="right-col">
 
+      <div class="stats-row">
+        <div class="stat-card" id="stat-hits">
+          <div class="stat-value green" id="val-hits">—</div>
+          <div class="stat-label">PAGE HITS</div>
+        </div>
 
+        <div class="stat-card" id="stat-faults">
+          <div class="stat-value red" id="val-faults">—</div>
+          <div class="stat-label">PAGE FAULTS</div>
+        </div>
 
+        <div class="stat-card">
+          <div class="stat-value" id="val-rate">—</div>
+          <div class="stat-label">FAULT RATE</div>
+        </div>
+      </div>
 
+      <div class="viz-wrapper">
+        <div class="panel-title"> FRAME STATE SIMULATION</div>
+        <div class="table-scroll" id="viz-output">
+          <div class="placeholder">
+            <div class="placeholder-icon">⬡</div>
+            <p>Configure your parameters on the left<br />
+              and click RUN SIMULATION to begin.</p>
+          </div>
+        </div>
+      </div>
 
+    </div>
+  </div>
 
-
-
+  <footer>· DYNAMIC MEMORY MANAGEMENT VISUALIZER ·</footer>
 
     
     <script src="script.js"></script>
