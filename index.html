@@ -1,110 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dynamic Memory Management Visualizer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap"
-        rel="stylesheet" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-icon">🧠</div>
-        <div>
-            <h1>Memory <span>Visualizer</span></h1>
-            <p> DYNAMIC MEMORY MANAGEMENT SIMULATOR </p>
-        </div>
-    </header>
-      <!-- MAIN LAYOUT -->
-  <div class="container">
 
-    <!-- LEFT: INPUT PANEL -->
+<header class="header">
+    <div class="header-icon">🧠</div>
+
+    <div>
+        <h1>Memory <span>Visualizer</span></h1>
+        <p>DYNAMIC MEMORY MANAGEMENT SIMULATOR</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- CONFIGURATION -->
     <aside>
-      <div class="panel">
-        <div class="panel-title"> CONFIG</div>
+        <section class="panel">
 
-        <div class="field">
-          <label>NUMBER OF FRAMES</label>
-          <input type="number" id="frames-input" min="1" max="10" value="3" />
-        </div>
+            <div class="panel-title">CONFIG</div>
 
-        <div class="field">
-          <label>PAGE REFERENCE STRING</label>
-          <input type="text" id="pages-input"
-            value="7,0,1,2,0,3,0,4,2,3,0,3,2" />
-        </div>
+            <div class="field">
+                <label for="frames-input">NUMBER OF FRAMES</label>
 
-        <div class="field">
-          <label>REPLACEMENT ALGORITHM</label>
-          <div class="algo-toggle">
-            <button class="algo-btn active" data-algo="FIFO">FIFO</button>
-            <button class="algo-btn" data-algo="LRU">LRU</button>
-          </div>
-        </div>
+                <input
+                    type="number"
+                    id="frames-input"
+                    min="1"
+                    max="10"
+                    value="3"
+                >
+            </div>
 
-        <div class="error-msg" id="error-msg"></div>
+            <div class="field">
+                <label for="pages-input">PAGE REFERENCE STRING</label>
 
-        <div class="speed-row">
-          <label>ANIM SPEED</label>
-          <input type="range" id="speed-slider" min="200" max="1500" value="700" />
-        </div>
+                <input
+                    type="text"
+                    id="pages-input"
+                    value="7,0,1,2,0,3,0,4,2,3,0,3,2"
+                    placeholder="Example: 7,0,1,2,0,3"
+                >
+            </div>
 
-        <button class="run-btn" id="run-btn">▶ RUN SIMULATION</button>
-        <button class="run-btn" id="compare-btn">⚡ COMPARE FIFO vs LRU</button>
-        <button class="reset-btn" id="reset-btn">↺ RESET</button>
+            <div class="field">
 
-        <div class="legend">
-          <div class="legend-item">
-            <div class="dot hit"></div> PAGE HIT
-          </div>
-          <div class="legend-item">
-            <div class="dot fault"></div> PAGE FAULT
-          </div>
-        </div>
-      </div>
+                <label>REPLACEMENT ALGORITHM</label>
+
+                <div class="algo-toggle">
+
+                    <button
+                        class="algo-btn active"
+                        data-algo="FIFO"
+                    >
+                        FIFO
+                    </button>
+
+                    <button
+                        class="algo-btn"
+                        data-algo="LRU"
+                    >
+                        LRU
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div
+                class="error-msg"
+                id="error-msg"
+                role="alert"
+            ></div>
+
+            <div class="speed-row">
+
+                <label for="speed-slider">
+                    ANIMATION SPEED
+                </label>
+
+                <input
+                    type="range"
+                    id="speed-slider"
+                    min="200"
+                    max="1500"
+                    value="700"
+                >
+
+            </div>
+
+            <button
+                class="run-btn"
+                id="run-btn"
+            >
+                ▶ RUN SIMULATION
+            </button>
+
+            <button
+                class="compare-btn"
+                id="compare-btn"
+            >
+                ⚡ COMPARE FIFO vs LRU
+            </button>
+
+            <button
+                class="reset-btn"
+                id="reset-btn"
+            >
+                ↺ RESET
+            </button>
+
+            <div class="legend">
+
+                <div class="legend-item">
+                    <div class="dot hit"></div>
+                    PAGE HIT
+                </div>
+
+                <div class="legend-item">
+                    <div class="dot fault"></div>
+                    PAGE FAULT
+                </div>
+
+            </div>
+
+        </section>
     </aside>
 
-      <!-- RIGHT: OUTPUT PANEL -->
-    <div class="right-col">
 
-      <div class="stats-row">
-        <div class="stat-card" id="stat-hits">
-          <div class="stat-value green" id="val-hits">—</div>
-          <div class="stat-label">PAGE HITS</div>
+    <!-- OUTPUT -->
+    <section class="right-col">
+
+        <!-- STATISTICS -->
+
+        <div class="stats-row">
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-value green"
+                    id="val-hits"
+                >
+                    —
+                </div>
+
+                <div class="stat-label">
+                    PAGE HITS
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-value red"
+                    id="val-faults"
+                >
+                    —
+                </div>
+
+                <div class="stat-label">
+                    PAGE FAULTS
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-value"
+                    id="val-rate"
+                >
+                    —
+                </div>
+
+                <div class="stat-label">
+                    FAULT RATE
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="stat-card" id="stat-faults">
-          <div class="stat-value red" id="val-faults">—</div>
-          <div class="stat-label">PAGE FAULTS</div>
-        </div>
 
-        <div class="stat-card">
-          <div class="stat-value" id="val-rate">—</div>
-          <div class="stat-label">FAULT RATE</div>
-        </div>
-      </div>
+        <!-- SIMULATION -->
 
-      <div class="viz-wrapper">
-        <div class="panel-title"> FRAME STATE SIMULATION</div>
-        <div class="table-scroll" id="viz-output">
-          <div class="placeholder">
-            <div class="placeholder-icon">⬡</div>
-            <p>Configure your parameters on the left<br />
-              and click RUN SIMULATION to begin.</p>
-          </div>
-        </div>
-      </div>
+        <section class="viz-wrapper">
 
-    </div>
-  </div>
+            <div class="panel-title">
+                FRAME STATE SIMULATION
+            </div>
 
-  <footer>· DYNAMIC MEMORY MANAGEMENT VISUALIZER ·</footer>
+            <div
+                class="current-page"
+                id="current-page"
+            >
+                Ready
+            </div>
 
-    <script src="script.js"></script>
+            <div
+                class="table-scroll"
+                id="viz-output"
+            >
+
+                <div class="placeholder">
+
+                    <div class="placeholder-icon">
+                        ⬡
+                    </div>
+
+                    <p>
+                        Configure your parameters on the left
+                        <br>
+                        and click RUN SIMULATION to begin.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP CONTROLS -->
+
+            <div
+                class="step-controls"
+                id="step-controls"
+            >
+
+                <button
+                    id="prev-btn"
+                    class="control-btn"
+                    disabled
+                >
+                    ◀ PREVIOUS
+                </button>
+
+                <span id="step-counter">
+                    STEP 0 / 0
+                </span>
+
+                <button
+                    id="next-btn"
+                    class="control-btn"
+                    disabled
+                >
+                    NEXT ▶
+                </button>
+
+                <button
+                    id="play-btn"
+                    class="control-btn"
+                    disabled
+                >
+                    ▶ PLAY
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPARISON -->
+
+        <section
+            class="comparison-wrapper"
+            id="comparison-wrapper"
+            hidden
+        >
+
+            <div class="panel-title">
+                ALGORITHM COMPARISON
+            </div>
+
+            <div class="comparison-grid">
+
+                <div class="comparison-card">
+
+                    <h3>FIFO</h3>
+
+                    <div class="comparison-stat">
+                        <span>Page Faults</span>
+                        <strong id="fifo-faults">—</strong>
+                    </div>
+
+                    <div class="comparison-stat">
+                        <span>Page Hits</span>
+                        <strong id="fifo-hits">—</strong>
+                    </div>
+
+                    <div class="comparison-stat">
+                        <span>Fault Rate</span>
+                        <strong id="fifo-rate">—</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="comparison-card">
+
+                    <h3>LRU</h3>
+
+                    <div class="comparison-stat">
+                        <span>Page Faults</span>
+                        <strong id="lru-faults">—</strong>
+                    </div>
+
+                    <div class="comparison-stat">
+                        <span>Page Hits</span>
+                        <strong id="lru-hits">—</strong>
+                    </div>
+
+                    <div class="comparison-stat">
+                        <span>Fault Rate</span>
+                        <strong id="lru-rate">—</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                class="comparison-result"
+                id="comparison-result"
+            ></div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<footer>
+    · DYNAMIC MEMORY MANAGEMENT VISUALIZER ·
+</footer>
+
+<script src="script.js"></script>
+
 </body>
-
 </html>
