@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,9 +26,10 @@
     </div>
 </header>
 
+
 <main class="container">
 
-    <!-- CONFIGURATION -->
+    <!-- CONFIGURATION PANEL -->
     <aside>
         <section class="panel">
 
@@ -45,6 +47,7 @@
                 >
             </div>
 
+
             <div class="field">
                 <label for="pages-input">PAGE REFERENCE STRING</label>
 
@@ -56,6 +59,7 @@
                 >
             </div>
 
+
             <div class="field">
 
                 <label>REPLACEMENT ALGORITHM</label>
@@ -63,6 +67,7 @@
                 <div class="algo-toggle">
 
                     <button
+                        type="button"
                         class="algo-btn active"
                         data-algo="FIFO"
                     >
@@ -70,6 +75,7 @@
                     </button>
 
                     <button
+                        type="button"
                         class="algo-btn"
                         data-algo="LRU"
                     >
@@ -80,11 +86,13 @@
 
             </div>
 
+
             <div
                 class="error-msg"
                 id="error-msg"
                 role="alert"
             ></div>
+
 
             <div class="speed-row">
 
@@ -102,26 +110,33 @@
 
             </div>
 
+
             <button
+                type="button"
                 class="run-btn"
                 id="run-btn"
             >
                 ▶ RUN SIMULATION
             </button>
 
+
             <button
+                type="button"
                 class="compare-btn"
                 id="compare-btn"
             >
                 ⚡ COMPARE FIFO vs LRU
             </button>
 
+
             <button
+                type="button"
                 class="reset-btn"
                 id="reset-btn"
             >
                 ↺ RESET
             </button>
+
 
             <div class="legend">
 
@@ -141,11 +156,10 @@
     </aside>
 
 
-    <!-- OUTPUT -->
+    <!-- OUTPUT PANEL -->
     <section class="right-col">
 
         <!-- STATISTICS -->
-
         <div class="stats-row">
 
             <div class="stat-card">
@@ -198,13 +212,13 @@
         </div>
 
 
-        <!-- SIMULATION -->
-
+        <!-- FRAME SIMULATION -->
         <section class="viz-wrapper">
 
             <div class="panel-title">
                 FRAME STATE SIMULATION
             </div>
+
 
             <div
                 class="current-page"
@@ -212,6 +226,7 @@
             >
                 Ready
             </div>
+
 
             <div
                 class="table-scroll"
@@ -236,13 +251,13 @@
 
 
             <!-- STEP CONTROLS -->
-
             <div
                 class="step-controls"
                 id="step-controls"
             >
 
                 <button
+                    type="button"
                     id="prev-btn"
                     class="control-btn"
                     disabled
@@ -250,11 +265,14 @@
                     ◀ PREVIOUS
                 </button>
 
+
                 <span id="step-counter">
                     STEP 0 / 0
                 </span>
 
+
                 <button
+                    type="button"
                     id="next-btn"
                     class="control-btn"
                     disabled
@@ -262,7 +280,9 @@
                     NEXT ▶
                 </button>
 
+
                 <button
+                    type="button"
                     id="play-btn"
                     class="control-btn"
                     disabled
@@ -275,8 +295,7 @@
         </section>
 
 
-        <!-- COMPARISON -->
-
+        <!-- FIFO VS LRU COMPARISON -->
         <section
             class="comparison-wrapper"
             id="comparison-wrapper"
@@ -287,8 +306,10 @@
                 ALGORITHM COMPARISON
             </div>
 
+
             <div class="comparison-grid">
 
+                <!-- FIFO -->
                 <div class="comparison-card">
 
                     <h3>FIFO</h3>
@@ -311,6 +332,7 @@
                 </div>
 
 
+                <!-- LRU -->
                 <div class="comparison-card">
 
                     <h3>LRU</h3>
@@ -334,6 +356,7 @@
 
             </div>
 
+
             <div
                 class="comparison-result"
                 id="comparison-result"
@@ -349,6 +372,7 @@
 <footer>
     · DYNAMIC MEMORY MANAGEMENT VISUALIZER ·
 </footer>
+
 
 <script src="script.js"></script>
 
