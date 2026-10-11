@@ -85,14 +85,13 @@ function getInputs() {
     errorMsg.style.display = "none";
 
     // Validate frame count
-    const frameCount =
-        Number.parseInt(framesInput.value, 10);
+    const frameCount = Number(framesInput.value);
 
     if (
-        Number.isNaN(frameCount) ||
-        frameCount < 1 ||
-        frameCount > 10
-    ) {
+    !Number.isInteger(frameCount) ||
+    frameCount < 1 ||
+    frameCount > 10
+) {
 
         showError(
             "ERROR: Frames must be between 1 and 10."
