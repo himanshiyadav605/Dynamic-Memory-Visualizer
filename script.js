@@ -51,15 +51,17 @@ const comparisonWrapper =
 // ALGORITHM TOGGLE
 // ------------------------------------------------------------
 
+
 document.querySelectorAll(".algo-btn").forEach(button => {
 
     button.addEventListener("click", () => {
 
-        document
-            .querySelectorAll(".algo-btn")
-            .forEach(btn => btn.classList.remove("active"));
+        document.querySelectorAll(".algo-btn").forEach(btn => {
+            const isSelected = btn === button;
 
-        button.classList.add("active");
+            btn.classList.toggle("active", isSelected);
+            btn.setAttribute("aria-pressed", String(isSelected));
+        });
 
         selectedAlgo = button.dataset.algo;
 
@@ -71,6 +73,7 @@ document.querySelectorAll(".algo-btn").forEach(button => {
     });
 
 });
+
 
 
 // ------------------------------------------------------------
